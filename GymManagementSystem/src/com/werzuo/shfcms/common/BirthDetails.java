@@ -5,13 +5,15 @@
  */
 package com.werzuo.shfcms.common;
 
+import com.werzuo.shfcms.view.HomeFrame;
+
 /**
  *
  * @author SW96
  */
 public class BirthDetails {
 
-    private String nicNo = "";
+    private String nicNo;
     private String gender = "";
     private String age = "";
     private String dob = "";

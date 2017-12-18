@@ -456,7 +456,6 @@ public class DashBoardPanel extends javax.swing.JPanel {
 
     private void txtWeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWeightActionPerformed
         txtHeight.requestFocus();
-        txtHeight.setText("");
         if(txtWeight.getText().isEmpty()){
             txtWeight.setText("0");
         }
@@ -472,7 +471,8 @@ public class DashBoardPanel extends javax.swing.JPanel {
         
         Double bmi = Weight / (height * height);
         System.out.println(bmi);
-        txtBmi.setText(bmi + "");
+        String data = String.format("%.2f", bmi);
+        txtBmi.setText(data );
 
         String bmit = txtBmi.getText();
         if (!bmit.isEmpty()) {

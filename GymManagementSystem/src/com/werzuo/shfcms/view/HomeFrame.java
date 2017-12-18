@@ -143,7 +143,6 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -713,7 +712,7 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel l7;
     private javax.swing.JLabel lblAttendance;
     private javax.swing.JLabel lblCloseBt;
-    public static javax.swing.JLabel lblDashboard;
+    private javax.swing.JLabel lblDashboard;
     private javax.swing.JLabel lblMaximizeBt;
     private javax.swing.JLabel lblMember;
     private javax.swing.JLabel lblMinimizeBt;

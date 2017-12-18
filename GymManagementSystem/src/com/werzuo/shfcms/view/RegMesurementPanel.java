@@ -64,8 +64,6 @@ public class RegMesurementPanel extends javax.swing.JPanel {
         txtLeanWeight = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
-        jRadioBtnMale = new javax.swing.JRadioButton();
-        jRadioBtnFemale = new javax.swing.JRadioButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -203,31 +201,6 @@ public class RegMesurementPanel extends javax.swing.JPanel {
         add(txtAge);
         txtAge.setBounds(140, 60, 140, 30);
 
-        buttonGroup1.add(jRadioBtnMale);
-        jRadioBtnMale.setText("Male");
-        jRadioBtnMale.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioBtnMaleMouseClicked(evt);
-            }
-        });
-        add(jRadioBtnMale);
-        jRadioBtnMale.setBounds(50, 180, 47, 23);
-
-        buttonGroup1.add(jRadioBtnFemale);
-        jRadioBtnFemale.setText("Female");
-        jRadioBtnFemale.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioBtnFemaleMouseClicked(evt);
-            }
-        });
-        jRadioBtnFemale.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioBtnFemaleActionPerformed(evt);
-            }
-        });
-        add(jRadioBtnFemale);
-        jRadioBtnFemale.setBounds(170, 180, 59, 23);
-
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Lean Weight");
@@ -327,6 +300,11 @@ public class RegMesurementPanel extends javax.swing.JPanel {
         txtHeight.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtHeight.setCaretColor(new java.awt.Color(255, 255, 255));
         txtHeight.setOpaque(false);
+        txtHeight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHeightActionPerformed(evt);
+            }
+        });
         add(txtHeight);
         txtHeight.setBounds(140, 140, 140, 30);
 
@@ -364,7 +342,7 @@ public class RegMesurementPanel extends javax.swing.JPanel {
 
         lblSpecial.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblSpecial.setForeground(new java.awt.Color(153, 0, 0));
-        lblSpecial.setText("lbs");
+        lblSpecial.setText("kg");
         add(lblSpecial);
         lblSpecial.setBounds(600, 170, 30, 30);
 
@@ -394,17 +372,9 @@ public class RegMesurementPanel extends javax.swing.JPanel {
         homeFrame.panelBody.revalidate();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jRadioBtnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioBtnFemaleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioBtnFemaleActionPerformed
-
-    private void jRadioBtnMaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioBtnMaleMouseClicked
-        setAdultBodyFatMale();
-    }//GEN-LAST:event_jRadioBtnMaleMouseClicked
-
-    private void jRadioBtnFemaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioBtnFemaleMouseClicked
-        setAdultBodyFatFeMale();
-    }//GEN-LAST:event_jRadioBtnFemaleMouseClicked
+    private void txtHeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHeightActionPerformed
+        setAdultBodyFat();
+    }//GEN-LAST:event_txtHeightActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -439,8 +409,6 @@ public class RegMesurementPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioBtnFemale;
-    private javax.swing.JRadioButton jRadioBtnMale;
     private javax.swing.JLabel lblLeftBicep;
     private javax.swing.JLabel lblSpecial;
     private javax.swing.JLabel lblSpecial1;
@@ -462,7 +430,7 @@ public class RegMesurementPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     /**
-     * create the register details model
+     * create the register details model created by SW96
      *
      * @return regDetails
      */
@@ -489,21 +457,30 @@ public class RegMesurementPanel extends javax.swing.JPanel {
 
         return regDetails;
     }
-    public void setAdultBodyFatMale(){
-        Double weight = Double.parseDouble(txtWeight.getText());
-        Double height = Double.parseDouble(txtHeight.getText());
-        Double bmi = weight / (height * height);
-        Double age = Double.parseDouble(txtAge.getText());
-        Double adultBdyFat = (102.0*bmi)+(0.23*age)-(10.8*1) - 5.4;
-        System.out.println("@RegMeasurementPanel"+adultBdyFat);
-                
-    }
-    public void setAdultBodyFatFeMale(){
-        Double weight = Double.parseDouble(txtWeight.getText());
-        Double height = Double.parseDouble(txtHeight.getText());
-        Double bmi = weight / (height * height);
-        Double age = Double.parseDouble(txtAge.getText());
-        Double adultBdyFat = (102.0*bmi)+(0.23*age)-(10.8*1) - 5.4;
-        System.out.println("@RegMeasurementPanel"+adultBdyFat);
+
+    /**
+     * created by robin setting adult body fat percentage to textFields
+     */
+    public void setAdultBodyFat() {
+        if (txtHeight.getText().isEmpty() || txtWeight.getText().isEmpty()) {
+
+            Double weight = Double.parseDouble(txtWeight.getText());
+            Double height = Double.parseDouble(txtHeight.getText());
+            Double bmi = weight / (height * height);
+            Double age = Double.parseDouble(txtAge.getText());
+            Double adultBdyFat;
+            if (member.getGender().equals("male")) {
+
+                adultBdyFat = (102.0 * bmi) + (0.23 * age) - (10.8 * 1) - 5.4;
+                System.out.println("@RegMeasurementPanel in Male" + adultBdyFat);
+            } else {
+                adultBdyFat = (102.0 * bmi) + (0.23 * age) - 5.4;
+                System.out.println("@RegMeasurementPanel in Female" + adultBdyFat);
+            }
+            txtFat.setText(Double.toString(adultBdyFat));
+        }else{
+            
+        }
+
     }
 }

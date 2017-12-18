@@ -5,6 +5,12 @@
  */
 package com.werzuo.shfcms.view;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Ravindu
@@ -34,6 +40,10 @@ public class AboutPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jXHyperlink1 = new org.jdesktop.swingx.JXHyperlink();
+        jLabel5 = new javax.swing.JLabel();
+        jXHyperlink2 = new org.jdesktop.swingx.JXHyperlink();
+        jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jLabel4 = new javax.swing.JLabel();
         lblModfyEventBt1 = new javax.swing.JLabel();
@@ -42,6 +52,38 @@ public class AboutPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setLayout(null);
+
+        jXHyperlink1.setText("<html>https://www.facebook.com<br>/werzuosolutions</html>");
+        jXHyperlink1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jXHyperlink1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXHyperlink1ActionPerformed(evt);
+            }
+        });
+        add(jXHyperlink1);
+        jXHyperlink1.setBounds(430, 350, 290, 50);
+
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("jLabel5");
+        jLabel5.setOpaque(true);
+        add(jLabel5);
+        jLabel5.setBounds(430, 360, 350, 40);
+
+        jXHyperlink2.setText("<html>https://www.facebook.com/werzuosolutions</html>");
+        jXHyperlink2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jXHyperlink2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXHyperlink2ActionPerformed(evt);
+            }
+        });
+        add(jXHyperlink2);
+        jXHyperlink2.setBounds(430, 390, 290, 50);
+
+        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("jLabel5");
+        jLabel6.setOpaque(true);
+        add(jLabel6);
+        jLabel6.setBounds(400, 400, 370, 40);
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -106,13 +148,30 @@ public class AboutPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblModfyEventBt1MouseExited
 
+    private void jXHyperlink1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHyperlink1ActionPerformed
+       
+        try {
+            Desktop.getDesktop().browse(URI.create("https://www.facebook.com/werzuosolutions"));
+        } catch (IOException ex) {
+            Logger.getLogger(AboutPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jXHyperlink1ActionPerformed
+
+    private void jXHyperlink2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHyperlink2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jXHyperlink2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private org.jdesktop.swingx.JXHyperlink jXHyperlink1;
+    private org.jdesktop.swingx.JXHyperlink jXHyperlink2;
     private javax.swing.JLabel lblModfyEventBt1;
     // End of variables declaration//GEN-END:variables
 }

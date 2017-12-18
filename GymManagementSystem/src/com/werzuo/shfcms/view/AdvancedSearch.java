@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,6 +44,7 @@ public class AdvancedSearch extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblCloseBt = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
@@ -55,6 +57,22 @@ public class AdvancedSearch extends javax.swing.JDialog {
         setMinimumSize(new java.awt.Dimension(600, 400));
         setUndecorated(true);
         getContentPane().setLayout(null);
+
+        lblCloseBt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCloseBt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/werzuo/shfcms/images/close.png"))); // NOI18N
+        lblCloseBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCloseBtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblCloseBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblCloseBtMouseExited(evt);
+            }
+        });
+        getContentPane().add(lblCloseBt);
+        lblCloseBt.setBounds(20, 10, 30, 30);
 
         jScrollPane1.setBackground(new Color(0,0,0,0));
 
@@ -77,6 +95,11 @@ public class AdvancedSearch extends javax.swing.JDialog {
             }
         });
         jTable1.setRowHeight(25);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(50);
@@ -113,7 +136,9 @@ public class AdvancedSearch extends javax.swing.JDialog {
         getContentPane().add(jLabel21);
         jLabel21.setBounds(20, 50, 140, 30);
 
+        txtSearch.setBackground(new Color(0,0,0,0));
         txtSearch.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        txtSearch.setForeground(new java.awt.Color(255, 255, 255));
         txtSearch.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSearch.setCaretColor(new java.awt.Color(255, 255, 255));
         txtSearch.setOpaque(false);
@@ -172,6 +197,23 @@ public class AdvancedSearch extends javax.swing.JDialog {
 
     }//GEN-LAST:event_txtSearchKeyTyped
 
+    private void lblCloseBtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseBtMouseClicked
+        // new OptionFrame(this, true, this, "DO YOU WANT TO LOG OUT ?").setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblCloseBtMouseClicked
+
+    private void lblCloseBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseBtMouseEntered
+        lblCloseBt.setIcon(new ImageIcon("./src/com/werzuo/shfcms/images/closeFill.png"));
+    }//GEN-LAST:event_lblCloseBtMouseEntered
+
+    private void lblCloseBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseBtMouseExited
+        lblCloseBt.setIcon(new ImageIcon("./src/com/werzuo/shfcms/images/close.png"));
+    }//GEN-LAST:event_lblCloseBtMouseExited
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        gettingTheSelectedValue();
+    }//GEN-LAST:event_jTable1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -198,6 +240,7 @@ public class AdvancedSearch extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(AdvancedSearch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -221,6 +264,7 @@ public class AdvancedSearch extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblCloseBt;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 
@@ -233,7 +277,7 @@ public class AdvancedSearch extends javax.swing.JDialog {
         for (Member advancedSearchMember : advancedSearchMembers) {
             String name = advancedSearchMember.getfName() + " " + advancedSearchMember.getlName();
 
-            Object[] row = {advancedSearchMember.getCid(), name, advancedSearchMember.getNic(), advancedSearchMember};
+            Object[] row = {advancedSearchMember.getCid(), name, advancedSearchMember.getNic(), advancedSearchMember.getGender()};
             dtm.addRow(row);
         }
     }
@@ -257,5 +301,8 @@ public class AdvancedSearch extends javax.swing.JDialog {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdvancedSearch.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    public void gettingTheSelectedValue(){
+        
     }
 }

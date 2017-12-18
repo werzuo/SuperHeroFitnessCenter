@@ -21,8 +21,10 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -444,14 +446,20 @@ public class PaymentPanel extends javax.swing.JPanel {
             }
             txtTotArrears.setText(Double.toString(total));
             String paymentType = cbPaymentType.getSelectedItem().toString();
-            PaymentController pc = new ControllerFactoryImpl().getPaymentController();
-            PaymentType searchPaymentTypeByType = pc.searchPaymentTypeByType(paymentType);
-            double fee = searchPaymentTypeByType.getFee();
-            txtFee.setText(Double.toString(fee));
-            txtTotArrears.setText(Double.toString(total));
+            if (!"Arrears".equals(paymentType)) {
+                PaymentController pc = new ControllerFactoryImpl().getPaymentController();
+                PaymentType searchPaymentTypeByType = pc.searchPaymentTypeByType(paymentType);
+                double fee = searchPaymentTypeByType.getFee();
+                txtFee.setText(Double.toString(fee));
+                txtTotArrears.setText(Double.toString(total));
+                double fee1 = Double.parseDouble(txtFee.getText());
+                txtGrandTotal.setText(Double.toString(fee1 + total));
+            }else{
+                txtFee.setText("0.0");
+                
+                txtGrandTotal.setText(Double.toString(0.0 + total));
+            }
 
-            double fee1 = Double.parseDouble(txtFee.getText());
-            txtGrandTotal.setText(Double.toString(fee1 + total));
         } catch (SQLException ex) {
             Logger.getLogger(PaymentPanel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -516,8 +524,10 @@ public class PaymentPanel extends javax.swing.JPanel {
             viewAllPaymentType = pc.viewAllPaymentType();
             int itemCount = cbPaymentType.getItemCount();
             if (itemCount > 0) {
-                cbPaymentType.removeAllItems();
+                //cbPaymentType.removeAllItems();
             } else {
+                //cbPaymentType.removeAll();
+                cbPaymentType.addItem("Arrears");
                 for (PaymentType viewAllPaymentType1 : viewAllPaymentType) {
                     cbPaymentType.addItem(viewAllPaymentType1.getType());
                 }
@@ -558,8 +568,8 @@ public class PaymentPanel extends javax.swing.JPanel {
                     Object[] data = {paymentDate, arrears};
                     dtm.addRow(data);
                 }
-                String fName = searchMember.getfName().toUpperCase() + " ";
-                String lName = searchMember.getlName().toUpperCase();
+                String fName = searchMember.getfName();
+                String lName = searchMember.getlName();
                 String fullName = fName + lName;
                 txtFullName.setText(fullName);
 

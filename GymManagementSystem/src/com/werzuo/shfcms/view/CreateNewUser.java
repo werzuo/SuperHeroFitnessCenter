@@ -12,7 +12,9 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 /**
@@ -141,14 +143,6 @@ public class CreateNewUser extends javax.swing.JPanel {
         btnAccount.setBounds(250, 410, 130, 40);
 
         comboType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "User" }));
-        comboType.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        comboType.setName(""); // NOI18N
-        comboType.setOpaque(false);
-        comboType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboTypeActionPerformed(evt);
-            }
-        });
         add(comboType);
         comboType.setBounds(430, 230, 220, 30);
 
@@ -179,16 +173,10 @@ public class CreateNewUser extends javax.swing.JPanel {
         add(jLabel13);
         jLabel13.setBounds(290, 180, 100, 30);
 
-        txtRePassword.setForeground(new java.awt.Color(255, 255, 255));
-        txtRePassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtRePassword.setCaretColor(new java.awt.Color(255, 255, 255));
         txtRePassword.setOpaque(false);
         add(txtRePassword);
         txtRePassword.setBounds(430, 330, 220, 30);
 
-        txtPasword.setForeground(new java.awt.Color(255, 255, 255));
-        txtPasword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPasword.setCaretColor(new java.awt.Color(255, 255, 255));
         txtPasword.setOpaque(false);
         add(txtPasword);
         txtPasword.setBounds(430, 280, 220, 30);
@@ -326,10 +314,6 @@ public class CreateNewUser extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAccountMouseClicked
 
-    private void comboTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboTypeActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAccount;
@@ -373,11 +357,9 @@ public class CreateNewUser extends javax.swing.JPanel {
             boolean addUser = userController.addUser(user);
             if (addUser) {
                 new OptionPaneAddedSuccess(homeFrame, true, "User Creation Success !");
-                txtFname.requestFocus();
                 setEmphtyFields();
             } else {
                 new OptionPaneAddedSuccess(homeFrame, true, "User Creation Failed !");
-                txtFname.requestFocus();
             }
 
         }

@@ -905,7 +905,7 @@ public class MakeShedulePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void cmbExerciseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbExerciseActionPerformed
-        txtRep.requestFocus();
+        txtSet.requestFocus();
         txtRep.setText("");
         txtSet.setText("");
     }//GEN-LAST:event_cmbExerciseActionPerformed
@@ -1136,6 +1136,9 @@ public class MakeShedulePanel extends javax.swing.JPanel {
 
         Object[] row = {eid, exercise, rep, set};
         dtm.addRow(row);
+        txtSet.setText("");
+        txtRep.setText("");
+        txtSet.requestFocus();
     }
 
     /**

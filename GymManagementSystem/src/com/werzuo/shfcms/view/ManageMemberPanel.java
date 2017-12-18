@@ -89,7 +89,6 @@ public class ManageMemberPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
 
         setLayout(null);
 
@@ -511,10 +510,6 @@ public class ManageMemberPanel extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/werzuo/shfcms/images/panelBody.PNG"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 970, 570);
-
-        jRadioButton1.setText("jRadioButton1");
-        add(jRadioButton1);
-        jRadioButton1.setBounds(510, 310, 107, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtFnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFnameKeyPressed
@@ -701,7 +696,6 @@ public class ManageMemberPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCancleEventBt;
     private javax.swing.JLabel lblCancleEventBt1;

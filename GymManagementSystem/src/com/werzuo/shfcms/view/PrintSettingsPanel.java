@@ -6,6 +6,10 @@
 package com.werzuo.shfcms.view;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.PrintJob;
+import java.awt.Toolkit;
+import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
 
 /**
@@ -37,8 +41,10 @@ public class PrintSettingsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        cardPanel = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         btnAdd = new javax.swing.JLabel();
+        btnAdd1 = new javax.swing.JLabel();
         lblModfyEventBt1 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         txtFname6 = new javax.swing.JTextField();
@@ -53,26 +59,19 @@ public class PrintSettingsPanel extends javax.swing.JPanel {
 
         setLayout(null);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(43, 217, 127)));
+        cardPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(43, 217, 127)));
+        cardPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 408, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 228, Short.MAX_VALUE)
-        );
+        jButton1.setText("jButton1");
+        cardPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
 
-        add(jPanel1);
-        jPanel1.setBounds(50, 160, 410, 230);
+        add(cardPanel);
+        cardPanel.setBounds(50, 160, 410, 230);
 
         btnAdd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnAdd.setText("Create");
+        btnAdd.setText("Print");
         btnAdd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -86,7 +85,26 @@ public class PrintSettingsPanel extends javax.swing.JPanel {
             }
         });
         add(btnAdd);
-        btnAdd.setBounds(760, 340, 130, 40);
+        btnAdd.setBounds(570, 340, 130, 40);
+
+        btnAdd1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnAdd1.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdd1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAdd1.setText("Create");
+        btnAdd1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnAdd1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAdd1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAdd1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAdd1MouseExited(evt);
+            }
+        });
+        add(btnAdd1);
+        btnAdd1.setBounds(760, 340, 130, 40);
 
         lblModfyEventBt1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblModfyEventBt1.setForeground(new java.awt.Color(255, 255, 255));
@@ -238,7 +256,13 @@ public class PrintSettingsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_lblModfyEventBt1MouseExited
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
-        // TODO add your handling code here:
+        Toolkit tkp = cardPanel.getToolkit();
+        JFrame frame = new JFrame();
+        PrintJob pjp = tkp.getPrintJob(frame, null, null);
+        Graphics g = pjp.getGraphics();
+        cardPanel.print(g);
+        g.dispose();
+        pjp.end();
     }//GEN-LAST:event_btnAddMouseClicked
 
     private void btnAddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseEntered
@@ -249,9 +273,24 @@ public class PrintSettingsPanel extends javax.swing.JPanel {
         btnAdd.setBorder(new LineBorder(Color.white));
     }//GEN-LAST:event_btnAddMouseExited
 
+    private void btnAdd1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdd1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdd1MouseClicked
+
+    private void btnAdd1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdd1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdd1MouseEntered
+
+    private void btnAdd1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdd1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdd1MouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAdd;
+    private javax.swing.JLabel btnAdd1;
+    private javax.swing.JPanel cardPanel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -259,7 +298,6 @@ public class PrintSettingsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblModfyEventBt1;
     private javax.swing.JTextField txtFname4;
     private javax.swing.JTextField txtFname5;

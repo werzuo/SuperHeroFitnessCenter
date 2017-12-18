@@ -290,8 +290,7 @@ public class OnGoingPlyersPanel extends javax.swing.JPanel {
                     dtm.addRow(row);
                 }
             } else {
-                OptionPaneAddedSuccess op = new OptionPaneAddedSuccess(homeFrame, true, "Opps..!! No Ongoning Members..");
-                op.btnOk.requestFocus();
+                new OptionPaneAddedSuccess(homeFrame, true, "Opps..!! No Ongoning Members..");
             }
         } catch (SQLException ex) {
             Logger.getLogger(OnGoingPlyersPanel.class.getName()).log(Level.SEVERE, null, ex);

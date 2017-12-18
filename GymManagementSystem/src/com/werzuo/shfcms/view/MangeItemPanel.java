@@ -9,12 +9,8 @@ import com.werzuo.shfcms.controller.ItemController;
 import com.werzuo.shfcms.controllerfactoryimpl.ControllerFactoryImpl;
 import com.werzuo.shfcms.model.Item;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.border.LineBorder;
@@ -56,7 +52,7 @@ public class MangeItemPanel extends javax.swing.JPanel {
         tblItem = new javax.swing.JTable();
         textItemId = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        lblAddEventBt1 = new javax.swing.JButton();
+        lblCancleEventBt1 = new javax.swing.JLabel();
         lblModfyEventBt = new javax.swing.JLabel();
         lblCancleEventBt = new javax.swing.JLabel();
         lblModfyEventBt1 = new javax.swing.JLabel();
@@ -124,6 +120,14 @@ public class MangeItemPanel extends javax.swing.JPanel {
                 textItemIdActionPerformed(evt);
             }
         });
+        textItemId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textItemIdKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textItemIdKeyReleased(evt);
+            }
+        });
         add(textItemId);
         textItemId.setBounds(190, 100, 220, 30);
 
@@ -133,18 +137,24 @@ public class MangeItemPanel extends javax.swing.JPanel {
         add(jLabel12);
         jLabel12.setBounds(50, 100, 100, 30);
 
-        lblAddEventBt1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblAddEventBt1.setForeground(new java.awt.Color(255, 255, 255));
-        lblAddEventBt1.setText("Add new Item");
-        lblAddEventBt1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        lblAddEventBt1.setContentAreaFilled(false);
-        lblAddEventBt1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblAddEventBt1ActionPerformed(evt);
+        lblCancleEventBt1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblCancleEventBt1.setForeground(new java.awt.Color(255, 255, 255));
+        lblCancleEventBt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCancleEventBt1.setText("Add new Item");
+        lblCancleEventBt1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        lblCancleEventBt1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblCancleEventBt1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblCancleEventBt1MouseExited(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCancleEventBt1MouseClicked(evt);
             }
         });
-        add(lblAddEventBt1);
-        lblAddEventBt1.setBounds(370, 350, 130, 40);
+        add(lblCancleEventBt1);
+        lblCancleEventBt1.setBounds(370, 350, 130, 40);
 
         lblModfyEventBt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblModfyEventBt.setForeground(new java.awt.Color(255, 255, 255));
@@ -174,6 +184,12 @@ public class MangeItemPanel extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblCancleEventBtMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblCancleEventBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblCancleEventBtMouseExited(evt);
+            }
         });
         add(lblCancleEventBt);
         lblCancleEventBt.setBounds(230, 350, 130, 40);
@@ -186,6 +202,12 @@ public class MangeItemPanel extends javax.swing.JPanel {
         lblModfyEventBt1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblModfyEventBt1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblModfyEventBt1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblModfyEventBt1MouseExited(evt);
             }
         });
         add(lblModfyEventBt1);
@@ -259,9 +281,7 @@ public class MangeItemPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void textItemQtyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textItemQtyKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            updateItemText();
-        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_textItemQtyKeyPressed
 
     private void textItemQtyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textItemQtyKeyReleased
@@ -281,9 +301,24 @@ public class MangeItemPanel extends javax.swing.JPanel {
         lblModfyEventBt.setBorder(new LineBorder(new Color(43, 217, 127)));
     }//GEN-LAST:event_lblModfyEventBtMouseEntered
 
+    private void lblModfyEventBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblModfyEventBtMouseExited
+
+        lblModfyEventBt.setBorder(new LineBorder(Color.white));
+    }//GEN-LAST:event_lblModfyEventBtMouseExited
+
     private void lblCancleEventBtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancleEventBtMouseClicked
         updateItem();
     }//GEN-LAST:event_lblCancleEventBtMouseClicked
+
+    private void lblCancleEventBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancleEventBtMouseEntered
+
+        lblCancleEventBt.setBorder(new LineBorder(new Color(43, 217, 127)));
+    }//GEN-LAST:event_lblCancleEventBtMouseEntered
+
+    private void lblCancleEventBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancleEventBtMouseExited
+
+        lblCancleEventBt.setBorder(new LineBorder(Color.white));
+    }//GEN-LAST:event_lblCancleEventBtMouseExited
 
     private void lblModfyEventBt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblModfyEventBt1MouseClicked
         SettingsPanel s = new SettingsPanel();
@@ -293,6 +328,34 @@ public class MangeItemPanel extends javax.swing.JPanel {
         homeFrame.panelBody.revalidate();
         homeFrame.panelBody.repaint();
     }//GEN-LAST:event_lblModfyEventBt1MouseClicked
+
+    private void lblModfyEventBt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblModfyEventBt1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblModfyEventBt1MouseEntered
+
+    private void lblModfyEventBt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblModfyEventBt1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblModfyEventBt1MouseExited
+
+    private void lblCancleEventBt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancleEventBt1MouseClicked
+        addItem();
+    }//GEN-LAST:event_lblCancleEventBt1MouseClicked
+
+    private void lblCancleEventBt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancleEventBt1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblCancleEventBt1MouseEntered
+
+    private void lblCancleEventBt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancleEventBt1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblCancleEventBt1MouseExited
+
+    private void textItemIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textItemIdKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textItemIdKeyPressed
+
+    private void textItemIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textItemIdKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textItemIdKeyReleased
 
     private void tblItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItemMouseClicked
         setToTextFields();
@@ -310,15 +373,6 @@ public class MangeItemPanel extends javax.swing.JPanel {
         textItemQty.requestFocus();
     }//GEN-LAST:event_textItemNameActionPerformed
 
-    private void lblModfyEventBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblModfyEventBtMouseExited
-
-        lblModfyEventBt.setBorder(new LineBorder(Color.white));
-    }//GEN-LAST:event_lblModfyEventBtMouseExited
-
-    private void lblAddEventBt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblAddEventBt1ActionPerformed
-        addItem();
-    }//GEN-LAST:event_lblAddEventBt1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -328,8 +382,8 @@ public class MangeItemPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton lblAddEventBt1;
     private javax.swing.JLabel lblCancleEventBt;
+    private javax.swing.JLabel lblCancleEventBt1;
     private javax.swing.JLabel lblModfyEventBt;
     private javax.swing.JLabel lblModfyEventBt1;
     private javax.swing.JTable tblItem;
@@ -351,21 +405,13 @@ public class MangeItemPanel extends javax.swing.JPanel {
             boolean addItem = itemController.addItem(item1);
             if (addItem) {
                 new OptionPaneAddedSuccess(homeFrame, true, "Item Added Success..");
-                clearData();
                 loadToTable();
             } else {
                 new OptionPaneAddedSuccess(homeFrame, true, "Item Added Fail..");
             }
 
         } catch (SQLException ex) {
-            String exx = ex + "";
-            String output = "com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '" + id + "' for key 'PRIMARY'";
-            if (exx.equals(output)) {
-                new OptionPaneAddedSuccess(homeFrame, true, "Item Exist..");
-            } else {
-                Logger.getLogger(MangeItemPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+            Logger.getLogger(MangeItemPanel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MangeItemPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -399,14 +445,10 @@ public class MangeItemPanel extends javax.swing.JPanel {
      * This method is used to set data into text fields from table to make a
      * successful update
      */
-    String id = "";
-    String name = "";
-    double qty = 0.0;
-
     public void setToTextFields() {
-        id = (String) tblItem.getValueAt(tblItem.getSelectedRow(), 0);
-        name = (String) tblItem.getValueAt(tblItem.getSelectedRow(), 1);
-        qty = (double) tblItem.getValueAt(tblItem.getSelectedRow(), 2);
+        String id = (String) tblItem.getValueAt(tblItem.getSelectedRow(), 0);
+        String name = (String) tblItem.getValueAt(tblItem.getSelectedRow(), 1);
+        double qty = (double) tblItem.getValueAt(tblItem.getSelectedRow(), 2);
 
         textItemId.setText(id);
         textItemName.setText(name);
@@ -416,6 +458,7 @@ public class MangeItemPanel extends javax.swing.JPanel {
     /**
      * This method is used to send data from user interface to remove an item
      */
+
     public void removeItem() {
         try {
             String id = textItemId.getText();
@@ -424,14 +467,8 @@ public class MangeItemPanel extends javax.swing.JPanel {
             if (deleteItem) {
                 new OptionPaneAddedSuccess(homeFrame, true, "Item Removed Succeffully..");
                 loadToTable();
-                clearData();
             } else {
-                if (id.equals("")) {
-                    new OptionPaneAddedSuccess(homeFrame, true, "Please Select Item From Table To Remove..");
-                } else {
-                    new OptionPaneAddedSuccess(homeFrame, true, "Item Removed Fail..");
-                }
-
+                new OptionPaneAddedSuccess(homeFrame, true, "Item Removed Fail..");
             }
         } catch (SQLException ex) {
             Logger.getLogger(MangeItemPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -451,76 +488,12 @@ public class MangeItemPanel extends javax.swing.JPanel {
             Item item1 = new Item(id, item, qty);
 
             ItemController itemController = new ControllerFactoryImpl().getItemController();
-            if (!syncData()) {
-
-                boolean updateItem = itemController.updateItem(item1);
-                if (updateItem) {
-                    new OptionPaneAddedSuccess(homeFrame, true, "Item updated Succeffully..");
-                    loadToTable();
-                    clearData();
-                } else {
-                    new OptionPaneAddedSuccess(homeFrame, true, "Item updated fail..");
-                }
-            } else {
-                OptionPaneAddedSuccess os = new OptionPaneAddedSuccess(homeFrame, true, "No Item update Pending..");
-                os.dispose();
-
+            boolean updateItem = itemController.updateItem(item1);
+            if (updateItem) {
+                new OptionPaneAddedSuccess(homeFrame, true, "Item updated Succeffully..");
                 loadToTable();
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(MangeItemPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MangeItemPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NumberFormatException ex) {
-
-        }
-
-    }
-
-    public void updateItemText() {
-        try {
-            String id = textItemId.getText();
-            String item = textItemName.getText();
-            Double qty = Double.parseDouble(textItemQty.getText());
-            Item item1 = new Item(id, item, qty);
-
-            ItemController itemController = new ControllerFactoryImpl().getItemController();
-            if (!syncData()) {
-
-                boolean updateItem = itemController.updateItem(item1);
-                if (updateItem) {
-                    new OptionPaneAddedSuccess(homeFrame, true, "Item updated Succeffully..");
-                    loadToTable();
-                    clearData();
-                } else {
-                    new OptionPaneAddedSuccess(homeFrame, true, "Item updated fail..");
-                }
             } else {
-                lblAddEventBt1.doClick();
-                loadToTable();
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(MangeItemPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MangeItemPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NumberFormatException ex) {
-
-        }
-
-    }
-
-    public boolean syncData() {
-        boolean ifs = false;
-        try {
-            String iId = textItemId.getText();
-            String iName = textItemName.getText();
-            double iqty = Double.parseDouble(textItemQty.getText());
-            Item sI = new ControllerFactoryImpl().getItemController().SearchItem(iId);
-
-            if (iId.equals(sI.getItemId()) && iName.equals(sI.getItemName()) && iqty == sI.getItemQty()) {
-                ifs = true;
+                new OptionPaneAddedSuccess(homeFrame, true, "Item updated fail..");
             }
 
         } catch (SQLException ex) {
@@ -528,14 +501,5 @@ public class MangeItemPanel extends javax.swing.JPanel {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MangeItemPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        return ifs;
-    }
-
-    public void clearData() {
-        textItemId.requestFocus();
-        textItemId.setText("");
-        textItemName.setText("");
-        textItemQty.setText("");
     }
 }

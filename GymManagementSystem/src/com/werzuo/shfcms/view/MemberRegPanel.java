@@ -47,7 +47,6 @@ public class MemberRegPanel extends javax.swing.JPanel {
         this.homeFrame = homeFrame;
         wCam.setViewSize(cs);
         wCamPanel.setFillArea(true);
-        
         camPanel.setLayout(new FlowLayout());
         camPanel.add(wCamPanel);
         opencam();

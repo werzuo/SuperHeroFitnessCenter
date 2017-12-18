@@ -22,7 +22,7 @@ public class ComboSearch {
     private JTextField text;
 
     public void setSearchableCombo(final JComboBox jComboBox, boolean mustSort, final String noReultsText) {
-        ar = new ArrayList<>();
+        ar = new ArrayList<String>();
         final int s = jComboBox.getItemCount();
         for (int i = 0; i < s; i++) {
             boolean exists = false;
@@ -44,7 +44,6 @@ public class ComboSearch {
         text = (JTextField) jComboBox.getEditor().getEditorComponent();
         text.addKeyListener(new KeyAdapter() {
 
-            @Override
             public void keyReleased(KeyEvent evt) {
                 int key = evt.getKeyCode();
                 if (!(key == KeyEvent.VK_ESCAPE || key == KeyEvent.VK_ENTER || key == KeyEvent.VK_DOWN || key == KeyEvent.VK_UP)) {

@@ -47,13 +47,12 @@ public class LoginFrame extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         lblPassword = new javax.swing.JLabel();
         lblShowPassword = new javax.swing.JLabel();
+        lblCloseBt = new javax.swing.JLabel();
         lblMinimizeBt = new javax.swing.JLabel();
         lblMaximizeBt = new javax.swing.JLabel();
-        lblCloseBt = new javax.swing.JLabel();
         lblFullImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setUndecorated(true);
 
@@ -126,6 +125,22 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel1.add(lblShowPassword);
         lblShowPassword.setBounds(460, 440, 30, 50);
 
+        lblCloseBt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCloseBt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/werzuo/shfcms/images/close.png"))); // NOI18N
+        lblCloseBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCloseBtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblCloseBtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblCloseBtMouseExited(evt);
+            }
+        });
+        jPanel1.add(lblCloseBt);
+        lblCloseBt.setBounds(20, 10, 30, 30);
+
         lblMinimizeBt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMinimizeBt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/werzuo/shfcms/images/mimimize.png"))); // NOI18N
         lblMinimizeBt.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,11 +170,6 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel1.add(lblMaximizeBt);
         lblMaximizeBt.setBounds(70, 10, 30, 30);
 
-        lblCloseBt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/werzuo/shfcms/images/close.png"))); // NOI18N
-        lblCloseBt.setText("jLabel1");
-        jPanel1.add(lblCloseBt);
-        lblCloseBt.setBounds(20, 10, 30, 30);
-
         lblFullImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/werzuo/shfcms/images/gym-wallpaper-3 (2).png"))); // NOI18N
         jPanel1.add(lblFullImage);
         lblFullImage.setBounds(0, 0, 1370, 770);
@@ -186,7 +196,6 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void lblUserNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserNameMouseClicked
         txtUsername.setVisible(true);
-        txtUsername.requestFocus();
     }//GEN-LAST:event_lblUserNameMouseClicked
 
     private void lblPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPasswordMouseClicked
@@ -220,6 +229,18 @@ public class LoginFrame extends javax.swing.JFrame {
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         checkCreditials();
     }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void lblCloseBtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseBtMouseClicked
+        new OptionFrame(this, true, this, "DO YOU WANT TO LEAVE THIS PAGE ?").setVisible(true);
+    }//GEN-LAST:event_lblCloseBtMouseClicked
+
+    private void lblCloseBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseBtMouseEntered
+        lblCloseBt.setIcon(new ImageIcon("./src/com/werzuo/shfcms/images/closeFill.png"));
+    }//GEN-LAST:event_lblCloseBtMouseEntered
+
+    private void lblCloseBtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseBtMouseExited
+        lblCloseBt.setIcon(new ImageIcon("./src/com/werzuo/shfcms/images/close.png"));
+    }//GEN-LAST:event_lblCloseBtMouseExited
 
     private void lblMinimizeBtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizeBtMouseClicked
         setExtendedState(HomeFrame.ICONIFIED);
@@ -294,28 +315,31 @@ public class LoginFrame extends javax.swing.JFrame {
      * Create a new User
      */
     private void checkCreditials() {
+        
         String userName = txtUsername.getText();
         String pass = "";
+        new HomeFrame(userName).setVisible(true);
+        this.dispose();
 
-        char[] password = txtPassword.getPassword();
-        for (int i = 0; i < password.length; i++) {
-            pass += password[i];
-        }
-        try {
-            ControllerFactory controllerFactory = new ControllerFactoryImpl();
-            boolean checkUserLogin = controllerFactory.getUserController().checkUserLogin(userName, pass);
-
-            if (checkUserLogin) {
-                new HomeFrame(userName).setVisible(true);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "User Name or Password is incorrect..");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        char[] password = txtPassword.getPassword();
+//        for (int i = 0; i < password.length; i++) {
+//            pass += password[i];
+//        }
+//        try {
+//            ControllerFactory controllerFactory = new ControllerFactoryImpl();
+//            boolean checkUserLogin = controllerFactory.getUserController().checkUserLogin(userName, pass);
+//
+//            if (checkUserLogin) {
+//                new HomeFrame(userName).setVisible(true);
+//                this.dispose();
+//            } else {
+//                JOptionPane.showMessageDialog(this, "User Name or Password is incorrect..");
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
 }

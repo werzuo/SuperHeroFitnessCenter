@@ -8,9 +8,11 @@ package com.werzuo.shfcms.view;
 import com.werzuo.shfcms.common.IDGenarator;
 import com.werzuo.shfcms.controller.AttendanceController;
 import com.werzuo.shfcms.controller.MemberController;
+import com.werzuo.shfcms.controller.UserController;
 import com.werzuo.shfcms.controllerfactoryimpl.ControllerFactoryImpl;
 import com.werzuo.shfcms.model.Attendance;
 import com.werzuo.shfcms.model.Member;
+import com.werzuo.shfcms.model.User;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -114,7 +116,13 @@ public class AttendancePanel extends javax.swing.JPanel {
 
         txtMemberId.setForeground(new java.awt.Color(255, 255, 255));
         txtMemberId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMemberId.setCaretColor(new java.awt.Color(255, 255, 255));
         txtMemberId.setOpaque(false);
+        txtMemberId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMemberIdActionPerformed(evt);
+            }
+        });
         txtMemberId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMemberIdKeyReleased(evt);
@@ -123,8 +131,10 @@ public class AttendancePanel extends javax.swing.JPanel {
         add(txtMemberId);
         txtMemberId.setBounds(680, 80, 190, 30);
 
+        txtCustomerName.setBackground(new Color(0,0,0,0));
         txtCustomerName.setForeground(new java.awt.Color(255, 255, 255));
         txtCustomerName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCustomerName.setCaretColor(new java.awt.Color(255, 255, 255));
         txtCustomerName.setOpaque(false);
         txtCustomerName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,6 +202,10 @@ public class AttendancePanel extends javax.swing.JPanel {
         add(jLabel1);
         jLabel1.setBounds(0, 0, 970, 570);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtMemberIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMemberIdActionPerformed
 
     private void btpaymentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btpaymentMouseEntered
         btpayment.setBorder(new LineBorder(new Color(43, 227, 117)));

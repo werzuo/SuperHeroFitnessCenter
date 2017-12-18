@@ -5,7 +5,9 @@
  */
 package com.werzuo.shfcms.view;
 
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -45,7 +47,7 @@ public class OptionPaneAddedSuccess extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         lblCloseBt = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
-        btnOk = new javax.swing.JButton();
+        lblNo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -75,20 +77,32 @@ public class OptionPaneAddedSuccess extends javax.swing.JDialog {
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setText("                 Added Success...!");
         jPanel1.add(lblTitle);
-        lblTitle.setBounds(47, 26, 270, 51);
+        lblTitle.setBounds(57, 26, 260, 51);
 
-        btnOk.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnOk.setForeground(new java.awt.Color(255, 255, 255));
-        btnOk.setText("Ok");
-        btnOk.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
-        btnOk.setContentAreaFilled(false);
-        btnOk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOkActionPerformed(evt);
+        lblNo.setBackground(new java.awt.Color(204, 0, 0));
+        lblNo.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblNo.setForeground(new java.awt.Color(255, 255, 255));
+        lblNo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNo.setText("Ok");
+        lblNo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
+        lblNo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblNoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblNoMouseExited(evt);
             }
         });
-        jPanel1.add(btnOk);
-        btnOk.setBounds(130, 80, 79, 25);
+        lblNo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lblNoKeyPressed(evt);
+            }
+        });
+        jPanel1.add(lblNo);
+        lblNo.setBounds(140, 80, 80, 26);
         jPanel1.add(jLabel5);
         jLabel5.setBounds(1, 1, 350, 140);
 
@@ -118,9 +132,25 @@ public class OptionPaneAddedSuccess extends javax.swing.JDialog {
         lblCloseBt.setIcon(new ImageIcon("./src/com/werzuo/shfcms/images/close.png"));
     }//GEN-LAST:event_lblCloseBtMouseExited
 
-    private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
+    private void lblNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNoMouseClicked
         this.dispose();
-    }//GEN-LAST:event_btnOkActionPerformed
+    }//GEN-LAST:event_lblNoMouseClicked
+
+    private void lblNoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNoMouseEntered
+
+        lblNo.setOpaque(true);
+        lblNo.repaint();
+    }//GEN-LAST:event_lblNoMouseEntered
+
+    private void lblNoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNoMouseExited
+        lblNo.setOpaque(false);
+        lblNo.repaint();
+
+    }//GEN-LAST:event_lblNoMouseExited
+
+    private void lblNoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblNoKeyPressed
+        this.dispose();
+    }//GEN-LAST:event_lblNoKeyPressed
 
     /**
      * @param args the command line arguments
@@ -165,10 +195,10 @@ public class OptionPaneAddedSuccess extends javax.swing.JDialog {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btnOk;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCloseBt;
+    private javax.swing.JLabel lblNo;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }
